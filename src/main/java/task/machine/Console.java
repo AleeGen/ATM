@@ -1,6 +1,6 @@
-package task;
+package task.machine;
 
-import task.validation.Validator;
+import task.machine.validation.Validator;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,8 @@ import java.io.InputStreamReader;
 
 public class Console {
 
-    private Console(){}
+    private Console() {
+    }
 
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -29,6 +30,7 @@ public class Console {
                 operation = read();
             } catch (IOException e) {
                 write(ConsoleMessage.FAILED_READING);
+                continue;
             }
             if (Validator.operationValid(operation)) {
                 int numberOperation = Integer.parseInt(operation);

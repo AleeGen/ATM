@@ -1,4 +1,4 @@
-package task;
+package task.machine;
 
 public final class ConsoleMessage {
 
@@ -13,7 +13,7 @@ public final class ConsoleMessage {
             4. exit
             """;
     public static final String ENTER_CART_NUMBER = "Enter the card number";
-    public static final String ENTER_PIN = "enter your pin";
+    public static final String ENTER_PIN = "Enter your pin";
     public static final String INVALID_CART = "The card number was entered incorrectly";
     public static final String CART_NOT_EXIST = "There is no such card";
     public static final String INCORRECT_PIN = "Incorrect pin entered";
@@ -33,4 +33,8 @@ public final class ConsoleMessage {
     public static final String NOT_ENOUGH_FUNDS_ON_CARD = "There are not enough funds on the card";
     public static final String INSUFFICIENT_FUNDS_ATM = "At the moment the ATM does not have enough funds, " +
             "please repeat later";
+
+    public static final String EXCEEDED_MAX_ADD = "You have exceeded the maximum amount of 1000000";
+    public static final String CARD_BLOCKED = "The card is blocked";
+    public static final String COUNT_FAILED_ATTEMPT_LOGIN = "You have made %d failed login attempts";
 }

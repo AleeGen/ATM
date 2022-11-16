@@ -1,14 +1,14 @@
-package task.command.impl;
+package task.machine.command.impl;
 
 import task.*;
-import task.database.Database;
-import task.CashMachine;
-import task.Console;
-import task.ConsoleMessage;
-import task.command.Command;
+import task.machine.command.Command;
+import task.server.Server;
+import task.machine.CashMachine;
+import task.machine.Console;
+import task.machine.ConsoleMessage;
 import task.exception.DataBaseException;
 import task.exception.ExecuteCommandException;
-import task.validation.Validator;
+import task.machine.validation.Validator;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -28,13 +28,13 @@ public class WithdrawAmountCommand implements Command {
                         Console.write(ConsoleMessage.NOT_ENOUGH_FUNDS_ON_CARD);
                         return;
                     }
-                    Database.withdrawAmount(card.getNumberCart(), sum);
+                    Server.withdrawAmount(card.getNumberCart(), sum);
                     if (CashMachine.withdraw(sum)) {
                         Console.write(String.format(ConsoleMessage.WITHDRAW_AMOUNT_SUCCESSFULLY, sum));
                     } else {
-                        Database.addAmount(card.getNumberCart(), sum);
+                        Server.addAmount(card.getNumberCart(), sum);
                     }
-                    Optional<Card> optionalCard = Database.getCardByNumber(card.getNumberCart());
+                    Optional<Card> optionalCard = Server.getCardByNumber(card.getNumberCart());
                     CashMachine.connectCard(optionalCard);
                 } else {
                     Console.write(ConsoleMessage.INVALID_AMOUNT);

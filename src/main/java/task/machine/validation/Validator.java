@@ -1,4 +1,4 @@
-package task.validation;
+package task.machine.validation;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

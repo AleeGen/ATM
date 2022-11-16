@@ -1,11 +1,11 @@
-package task.command.impl;
+package task.machine.command.impl;
 
 import task.Card;
-import task.CashMachine;
-import task.Console;
-import task.ConsoleMessage;
-import task.command.Command;
-import task.database.Database;
+import task.machine.CashMachine;
+import task.machine.Console;
+import task.machine.ConsoleMessage;
+import task.machine.command.Command;
+import task.server.Server;
 import task.exception.DataBaseException;
 import task.exception.ExecuteCommandException;
 
@@ -17,8 +17,8 @@ public class CheckBalanceCommand implements Command {
         Optional<Card> cardOptional = CashMachine.getCurrentCard();
         if (cardOptional.isPresent()) {
             try {
-                cardOptional = Database.getCardByNumber(cardOptional.get().getNumberCart());
-                if (card.isPresent()) {
+                cardOptional = Server.getCardByNumber(cardOptional.get().getNumberCart());
+                CashMachine.connectCard(cardOptional);
             } catch (DataBaseException e) {
                 throw new ExecuteCommandException(e.getMessage());
             }

@@ -1,4 +1,4 @@
-package task;
+package task.machine;
 
 public enum Operation {
     LOGIN,

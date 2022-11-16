@@ -1,4 +1,4 @@
-package task.command;
+package task.machine.command;
 
 import task.exception.ExecuteCommandException;
 

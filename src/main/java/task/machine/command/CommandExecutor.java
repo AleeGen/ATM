@@ -1,8 +1,8 @@
-package task.command;
+package task.machine.command;
 
-import task.Operation;
-import task.command.impl.*;
+import task.machine.Operation;
 import task.exception.ExecuteCommandException;
+import task.machine.command.impl.*;
 
 import java.util.HashMap;
 import java.util.Map;

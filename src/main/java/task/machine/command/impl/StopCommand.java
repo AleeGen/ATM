@@ -1,7 +1,7 @@
-package task.command.impl;
+package task.machine.command.impl;
 
-import task.CashMachine;
-import task.command.Command;
+import task.machine.CashMachine;
+import task.machine.command.Command;
 
 
 public class StopCommand implements Command {

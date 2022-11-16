@@ -1,14 +1,14 @@
-package task.command.impl;
+package task.machine.command.impl;
 
 import task.*;
-import task.database.Database;
-import task.CashMachine;
-import task.Console;
-import task.ConsoleMessage;
-import task.command.Command;
+import task.machine.command.Command;
+import task.server.Server;
+import task.machine.CashMachine;
+import task.machine.Console;
+import task.machine.ConsoleMessage;
 import task.exception.DataBaseException;
 import task.exception.ExecuteCommandException;
-import task.validation.Validator;
+import task.machine.validation.Validator;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -24,8 +24,11 @@ public class AddAmountCommand implements Command {
                 if (Validator.amountValid(amount)) {
                     int sum = Integer.parseInt(amount);
                     if (sum < 1000_000) {
-                        Database.addAmount(cardOptional.get().getNumberCart(), sum);
+                        CashMachine.add(sum);
+                        Server.addAmount(cardOptional.get().getNumberCart(), sum);
                         Console.write(String.format(ConsoleMessage.ADD_AMOUNT_SUCCESSFULLY, sum));
+                    } else {
+                        Console.write(ConsoleMessage.EXCEEDED_MAX_ADD);
                     }
                 } else {
                     Console.write(ConsoleMessage.INVALID_AMOUNT);
