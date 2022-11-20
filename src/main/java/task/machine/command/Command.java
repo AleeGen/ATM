@@ -1,7 +1,7 @@
 package task.machine.command;
 
-import task.exception.ExecuteCommandException;
+import task.exception.MachineException;
 
 public interface Command {
-    void execute() throws ExecuteCommandException;
+    void execute() throws MachineException;
 }

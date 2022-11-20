@@ -1,5 +1,7 @@
 package task;
 
+import java.util.Date;
+
 public class Card {
     private static final int MAX_COUNT_FAILED_ATTEMPT_LOGIN = 3;
     private final String numberCart;
@@ -7,12 +9,18 @@ public class Card {
     private int cash;
     private boolean block = false;
     private int countFailedAttemptLogin = 0;
+    private Date blockTime;
 
 
     public Card(String numberCart, String pin, int cash) {
         this.numberCart = numberCart;
         this.pin = pin;
         this.cash = cash;
+    }
+
+    public Card() {
+        this.numberCart = "default";
+        this.pin = "default";
     }
 
     public String getNumberCart() {
@@ -27,33 +35,40 @@ public class Card {
         return cash;
     }
 
-    public boolean isBlocked() {
+    public boolean getBlock() {
         return block;
     }
 
+    public int getCountFailedAttemptLogin() {
+        return countFailedAttemptLogin;
+    }
+
+    public Date getBlockTime() {
+        return blockTime;
+    }
+
     public void setBlock(boolean block) {
-        if (block == true) {
-            countFailedAttemptLogin = MAX_COUNT_FAILED_ATTEMPT_LOGIN;
+        if (block) {
+            blockTime = new Date();
+        } else {
+            blockTime = null;
+            countFailedAttemptLogin = 0;
         }
         this.block = block;
     }
 
     public void addFailedAttemptLogin() {
         countFailedAttemptLogin++;
-        if (countFailedAttemptLogin > 2) {
+        if (countFailedAttemptLogin >= MAX_COUNT_FAILED_ATTEMPT_LOGIN) {
             setBlock(true);
         }
     }
 
     public void setCountFailedAttemptLogin(int countFailedAttemptLogin) {
         this.countFailedAttemptLogin = countFailedAttemptLogin;
-        if(countFailedAttemptLogin>2){
+        if (countFailedAttemptLogin >= MAX_COUNT_FAILED_ATTEMPT_LOGIN) {
             setBlock(true);
         }
-    }
-
-    public int getCountFailedAttemptLogin() {
-        return countFailedAttemptLogin;
     }
 
     public void addAmount(int amount) {
@@ -66,12 +81,9 @@ public class Card {
 
     public Card copy() {
         Card card = new Card(numberCart, pin, cash);
+        card.setBlock(this.getBlock());
         card.setCountFailedAttemptLogin(this.getCountFailedAttemptLogin());
         return card;
     }
 
-    @Override
-    public String toString() {
-        return numberCart + " " + pin + " " + cash + " " + countFailedAttemptLogin;
-    }
 }

@@ -11,7 +11,7 @@ public class Console {
     private Console() {
     }
 
-    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     public static void write(Object info) {
         System.out.println(info);
@@ -25,7 +25,7 @@ public class Console {
     public static Operation getOperation() {
         do {
             write(ConsoleMessage.SELECT_ACTION);
-            String operation = null;
+            String operation;
             try {
                 operation = read();
             } catch (IOException e) {

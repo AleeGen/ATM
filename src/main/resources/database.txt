@@ -1,3 +1,5 @@
-7777-7777-7777-7777 7777 100000 0
-8888-8888-8888-8888 8888 2000 0
-9999-9999-9999-9999 9999 5000000 0
+[
+{"numberCart":"7777-7777-7777-7777","pin":"7777","cash":120000,"block":false,"countFailedAttemptLogin":1},
+{"numberCart":"8888-8888-8888-8888","pin":"8888","cash":50000,"block":false,"countFailedAttemptLogin":0},
+{"numberCart":"9999-9999-9999-9999","pin":"9999","cash":550000,"block":false,"countFailedAttemptLogin":2}
+]

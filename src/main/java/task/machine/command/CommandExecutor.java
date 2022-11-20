@@ -1,7 +1,7 @@
 package task.machine.command;
 
 import task.machine.Operation;
-import task.exception.ExecuteCommandException;
+import task.exception.MachineException;
 import task.machine.command.impl.*;
 
 import java.util.HashMap;
@@ -16,10 +16,11 @@ public class CommandExecutor {
         commands.put(Operation.WITHDRAW_AMOUNT, new WithdrawAmountCommand());
         commands.put(Operation.ADD_AMOUNT, new AddAmountCommand());
         commands.put(Operation.EXIT, new ExitCommand());
-        commands.put(Operation.STOP, new StopCommand());
     }
 
-    public static void executeCommand(Operation operation) throws ExecuteCommandException {
+    private CommandExecutor(){}
+
+    public static void executeCommand(Operation operation) throws MachineException {
         commands.get(operation).execute();
     }
 
