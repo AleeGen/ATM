@@ -44,7 +44,7 @@ public class LoginCommand implements Command {
         }
     }
 
-    private static void enterPin(Card card) throws IOException, ServerException {
+    private void enterPin(Card card) throws IOException, ServerException {
         Console.write(ConsoleMessage.ENTER_PIN);
         String pin = Console.read();
         if (pin.equals(card.getPin())) {
