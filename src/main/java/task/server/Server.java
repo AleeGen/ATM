@@ -26,6 +26,7 @@ public class Server {
                     .getLocation()
                     .getPath(), "UTF-8"))
                     .getParent()+"\\database.txt";
+            System.out.println(PATH_DATA);
         } catch (UnsupportedEncodingException e) {
             System.out.println(ServerMessage.ERROR_GETTING_DATABASE_PATH);
             throw new RuntimeException(e);

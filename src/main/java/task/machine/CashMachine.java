@@ -27,6 +27,7 @@ public class CashMachine {
                 .getLocation()
                 .getPath(), StandardCharsets.UTF_8))
                 .getParent() + "\\cash.txt";
+        System.out.println(PATH_CASH);
         System.out.println(ServiceMessage.START_MACHINE);
         try (BufferedReader reader = new BufferedReader(new FileReader(PATH_CASH))) {
             cash = Integer.parseInt(reader.readLine());
@@ -37,6 +38,10 @@ public class CashMachine {
     }
 
     public static void main(String[] args) {
+
+        for (int i = 0; i < args.length; i++) {
+            System.out.println(args[i]);
+        }
         while (isOn) {
             try {
                 CommandExecutor.executeCommand(Operation.LOGIN);
